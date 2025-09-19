@@ -12,7 +12,7 @@ stages:
         integrationArtifactUpload:
           packageId: "dev_tenant_cicd"
           # Use the filename with no spaces
-          filePath: "calling iflows from other cpi account.zip"
+          filePath: "calling_iflows_from_other_cpi_account.zip"
 
   # This stage DEPLOYS (UPDATES) your iFlow in the DEV tenant
   Deploy:
@@ -21,4 +21,3 @@ stages:
         cloudIntegrationDeploy:
           # This tells the pipeline to use the JSON file to update the URL
           configurationFile: "prod_config.json"
-          # NO destination is needed because we are deploying to the home tenant.
