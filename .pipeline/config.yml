@@ -4,15 +4,23 @@ general:
 
 # Define the pipeline stages
 stages:
-  # This single stage will deploy the iFlow and update the URL
+  # --- NEW DEBUGGING STAGE ---
+  Initialize:
+    steps:
+      - name: "Print Files for Debugging"
+        sh: |
+          echo "--- Listing all files in the repository ---"
+          ls -laR
+          echo "--- Displaying content of config.yml ---"
+          cat .pipeline/config.yml
+          echo "--- End of debugging step ---"
+
+  # This single stage will deploy the iFlow
   Deploy:
     steps:
       - name: "Deploy iFlow and Update Address"
         cloudIntegrationDeploy:
-          # --- YOU MUST PROVIDE THESE VALUES ---
           packageId: "dev_tenant_cicd"
           integrationFlowId: "calling_iflows_from_other_cpi_account_Created"
           filePath: "calling_iflows_from_other_cpi_account.zip"
-
-          # This tells the pipeline to use the JSON file to update the URL
           configurationFile: "prod_config.json"
