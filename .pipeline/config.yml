@@ -12,7 +12,7 @@ stages:
         integrationArtifactUpload:
           packageId: "dev_tenant_cicd"
           # Use the filename with no spaces
-          filePath: "calling_iflows_from_other_cpi_account.zip"
+          filePath: "calling iflows from other cpi account.zip"
 
   # This stage DEPLOYS (UPDATES) your iFlow in the DEV tenant
   Deploy:
