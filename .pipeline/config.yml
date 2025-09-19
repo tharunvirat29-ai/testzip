@@ -4,18 +4,12 @@ general:
 
 # Define the pipeline stages
 stages:
-  # We use a custom name to avoid the template's default 'Build' logic
-  Preparation:
-    steps:
-      - name: "Get iFlow Artifact from Git"
-        integrationArtifactUpload:
-          packageId: "dev_tenant_cicd"
-          filePath: "calling_iflows_from_other_cpi_account.zip"
-
-  # The Deploy stage
+  # This single stage will deploy the iFlow and update the URL
   Deploy:
     steps:
       - name: "Deploy iFlow and Update Address"
         cloudIntegrationDeploy:
+          packageId: "dev_tenant_cicd"
           integrationFlowId: "calling_iflows_from_other_cpi_account_Created"
+          filePath: "calling_iflows_from_other_cpi_account.zip"
           configurationFile: "prod_config.json"
